@@ -2199,8 +2199,8 @@ def python_send_sms():
     message_text = st.text_area("💬 Enter message text:", value="Hello from Twilio via Streamlit!")
     if st.button("📤 Send SMS"):
         try:
-            account_sid = ''
-            auth_token = ''
+            account_sid = os.getenv('TWILIO_ACCOUNT_SID', '')
+            auth_token = os.getenv('TWILIO_AUTH_TOKEN', '')
             client = Client(account_sid, auth_token)
             message = client.messages.create(body=message_text, from_='+12513060511', to=to_number.strip())
             st.success(f"✅ Message sent successfully! SID: {message.sid}")
@@ -2327,9 +2327,9 @@ def python_make_call():
     to_number = st.text_input("📰 Enter mobile number with country code:", value="+919460558829")
     if st.button("📞 Call Now"):
         try:
-            account_sid = 'wow'
-            auth_token = 'wow'
-            twilio_number = 'num'
+            account_sid = os.getenv('TWILIO_ACCOUNT_SID', '')
+            auth_token = os.getenv('TWILIO_AUTH_TOKEN', '')
+            twilio_number = os.getenv('TWILIO_PHONE_NUMBER', '')
             twiml_url = 'http://demo.twilio.com/docs/voice.xml'
             client = Client(account_sid, auth_token)
             call = client.calls.create(

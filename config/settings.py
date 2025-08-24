@@ -1,4 +1,5 @@
 # Application settings and configuration
+import os
 
 # Streamlit page configuration
 PAGE_CONFIG = {
@@ -8,11 +9,11 @@ PAGE_CONFIG = {
     "initial_sidebar_state": "expanded"
 }
 
-# API Keys (you should set these as environment variables in production)
-TWILIO_ACCOUNT_SID = ''
-TWILIO_AUTH_TOKEN = ''
-TWILIO_PHONE_NUMBER = ''
-GOOGLE_GEMINI_KEY = "AIz"
+# API Keys (set these as environment variables)
+TWILIO_ACCOUNT_SID = os.getenv('TWILIO_ACCOUNT_SID', 'your_twilio_account_sid_here')
+TWILIO_AUTH_TOKEN = os.getenv('TWILIO_AUTH_TOKEN', 'your_twilio_auth_token_here')
+TWILIO_PHONE_NUMBER = os.getenv('TWILIO_PHONE_NUMBER', 'your_twilio_phone_number_here')
+GOOGLE_GEMINI_KEY = os.getenv('GOOGLE_GEMINI_KEY', 'your_google_gemini_key_here')
 
 # Application paths
 STATIC_PATH = "static"
